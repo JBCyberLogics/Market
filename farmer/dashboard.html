@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/winnie/icon.png" />
+  <title>Farmer Dashboard - Online Farm Produce</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <div class="page role-page" data-role="farmer">
+    <header class="role-topbar">
+      <div class="container role-topbar-inner">
+        <a class="brand" href="/winnie/">
+          <img src="../icon.png" alt="Winnie" />
+          Online Farm Produce
+        </a>
+        <div></div>
+        <div class="role-actions">
+          <button class="btn btn-outline" data-role-modal-open="modal-product">Add product</button>
+          <button class="btn btn-ghost" aria-label="Notifications">Notifications</button>
+          <button class="btn btn-outline" data-role-modal-open="modal-profile">Profile</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="role-shell">
+      <aside class="role-sidebar">
+        <nav class="role-nav">
+          <a class="role-link is-active" href="#overview">Overview</a>
+          <a class="role-link" href="#my-products">My Products</a>
+          <a class="role-link" href="#orders">Orders</a>
+          <a class="role-link" href="#inventory">Inventory</a>
+          <a class="role-link" href="#earnings">Earnings</a>
+          <a class="role-link" href="#profile">Profile</a>
+        </nav>
+      </aside>
+
+      <main class="role-content">
+        <section id="overview" class="role-section">
+          <div class="role-section-header">
+            <div>
+              <h2 class="section-title">Overview</h2>
+              <p class="section-subtitle">Track products, orders, and earnings in real time.</p>
+            </div>
+            <div class="badge">Role: Farmer</div>
+          </div>
+          <div class="role-metrics">
+            <div class="card" data-farmer-metric="totalProducts">
+              <p class="helper">Total products</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+            <div class="card" data-farmer-metric="activeOrders">
+              <p class="helper">Active orders</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+            <div class="card" data-farmer-metric="todayEarnings">
+              <p class="helper">Today earnings</p>
+              <h3>KES 0.00</h3>
+              <p class="helper">No data available</p>
+            </div>
+            <div class="card" data-farmer-metric="lowStockCount">
+              <p class="helper">Low stock count</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="toolbar">
+              <div>
+                <h3>Recent activity</h3>
+                <p class="section-subtitle">Latest 5 order updates.</p>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Buyer</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              <tbody data-farmer-recent></tbody>
+            </table>
+            <div class="notice" data-farmer-empty="recent">No data available</div>
+          </div>
+        </section>
+
+        <section id="my-products" class="role-section">
+          <div class="role-section-header">
+            <div>
+              <h2 class="section-title">My Products</h2>
+              <p class="section-subtitle">Only your products are visible here.</p>
+            </div>
+            <div class="role-section-actions">
+              <button class="btn btn-outline" data-role-modal-open="modal-product">Create product</button>
+            </div>
+          </div>
+          <div class="admin-filters">
+            <input type="search" placeholder="Search products" data-farmer-filter="products-search" />
+            <select data-farmer-filter="products-status">
+              <option value="">All status</option>
+              <option value="available">Available</option>
+              <option value="unavailable">Unavailable</option>
+            </select>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Updated</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-farmer-rows="products"></tbody>
+            </table>
+            <div class="notice" data-farmer-empty="products">No data available</div>
+          </div>
+        </section>
+
+        <section id="orders" class="role-section">
+          <div class="role-section-header">
+            <div>
+              <h2 class="section-title">Orders</h2>
+              <p class="section-subtitle">Accept, ship, or cancel incoming orders.</p>
+            </div>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Buyer</th>
+                  <th>Product</th>
+                  <th>Qty</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-farmer-rows="orders"></tbody>
+            </table>
+            <div class="notice" data-farmer-empty="orders">No data available</div>
+          </div>
+        </section>
+
+        <section id="inventory" class="role-section">
+          <div class="role-section-header">
+            <div>
+              <h2 class="section-title">Inventory</h2>
+              <p class="section-subtitle">Low stock alerts are enabled.</p>
+            </div>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Current stock</th>
+                  <th>Low stock threshold</th>
+                </tr>
+              </thead>
+              <tbody data-farmer-rows="inventory"></tbody>
+            </table>
+            <div class="notice" data-farmer-empty="inventory">No data available</div>
+          </div>
+        </section>
+
+        <section id="earnings" class="role-section">
+          <div class="role-section-header">
+            <div>
+              <h2 class="section-title">Earnings</h2>
+              <p class="section-subtitle">Daily, weekly, and monthly summaries.</p>
+            </div>
+            <div class="role-section-actions">
+              <button class="btn btn-outline" data-confirm="Export report?">Export</button>
+            </div>
+          </div>
+          <div class="role-metrics">
+            <div class="card" data-farmer-earning="today">
+              <p class="helper">Today</p>
+              <h3>KES 0.00</h3>
+            </div>
+            <div class="card" data-farmer-earning="weekly">
+              <p class="helper">Weekly</p>
+              <h3>KES 0.00</h3>
+            </div>
+            <div class="card" data-farmer-earning="monthly">
+              <p class="helper">Monthly</p>
+              <h3>KES 0.00</h3>
+            </div>
+          </div>
+        </section>
+
+        <section id="profile" class="role-section">
+          <div class="role-section-header">
+            <div>
+              <h2 class="section-title">Profile</h2>
+              <p class="section-subtitle">Update your contact information.</p>
+            </div>
+            <div class="role-section-actions">
+              <button class="btn btn-outline" data-role-modal-open="modal-profile">Edit profile</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="notice" data-profile-summary>No data available</div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="role-modal" id="modal-product" aria-hidden="true">
+    <div class="role-modal-card">
+      <form class="form" data-farmer-form="product">
+        <div class="role-modal-header">
+          <h3>Product</h3>
+          <button class="btn btn-ghost" type="button" data-role-modal-close>Close</button>
+        </div>
+        <div class="role-modal-body scrollable-form">
+          <input type="hidden" name="product_id" />
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="input-group">
+            <label>Category</label>
+            <input type="text" name="category" required />
+          </div>
+          <div class="input-group">
+            <label>Price (KES)</label>
+            <input type="number" name="price_kes" min="0" step="0.01" required />
+          </div>
+          <div class="input-group">
+            <label>Quantity</label>
+            <input type="number" name="quantity" min="0" required />
+          </div>
+          <div class="input-group">
+            <label>Quantity label (optional)</label>
+            <input type="text" name="quantity_label" placeholder="e.g. 10 crates, 5 bags" />
+          </div>
+          <div class="input-group">
+            <label>Product image</label>
+            <input type="file" name="image_file" accept="image/*" />
+            <span class="helper">Choose an image from your device.</span>
+          </div>
+          <div class="input-group">
+            <label>Status</label>
+            <select name="status">
+              <option value="available">Available</option>
+              <option value="unavailable">Unavailable</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Description</label>
+            <textarea name="description" placeholder="Short description"></textarea>
+          </div>
+          <div class="notice" data-farmer-message="product" style="display: none;"></div>
+        </div>
+        <div class="role-modal-footer">
+          <button class="btn btn-outline" type="button" data-role-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm product save?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="role-modal" id="modal-profile" aria-hidden="true">
+    <div class="role-modal-card">
+      <form class="form" data-profile-form>
+        <div class="role-modal-header">
+          <h3>Profile</h3>
+          <button class="btn btn-ghost" type="button" data-role-modal-close>Close</button>
+        </div>
+        <div class="role-modal-body">
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label>New password (optional)</label>
+            <input type="password" name="password" minlength="8" />
+          </div>
+          <div class="notice" data-profile-message style="display: none;"></div>
+        </div>
+        <div class="role-modal-footer">
+          <button class="btn btn-outline" type="button" data-role-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm profile update?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

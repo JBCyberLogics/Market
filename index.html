@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/winnie/icon.png" />
+  <title>Online Farm Produce</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <canvas id="dotted-canvas" class="dotted-bg"></canvas>
+  <div class="page">
+    <header>
+      <div class="container navbar">
+        <a class="brand" href="/winnie/">
+          <img src="icon.png" alt="Winnie" />
+          Online Farm Produce
+        </a>
+        <nav class="nav-links">
+          <a href="/winnie/products.html">Products</a>
+         
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-outline" href="/winnie/login.html">Login</a>
+          <a class="btn btn-ghost" href="/winnie/admin-login.html">Admin Login</a>
+          <a class="btn btn-primary" href="/winnie/register.html">Sign Up</a>
+          <button class="theme-toggle" data-theme-toggle>Theme</button>
+          <a class="btn btn-ghost" href="/winnie/cart.html">Cart <span data-cart-count>0</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div>
+          <h1>Reliable farm produce sourcing for modern supply chains.</h1>
+          <p class="hero-lead">Online Farm Produce connects verified farmers with buyers through transparent pricing, dependable fulfillment, and real-time order visibility.</p>
+          <div class="nav-actions">
+            <a class="btn btn-primary" href="/winnie/products.html">Browse Produce</a>
+            <a class="btn btn-outline" href="/winnie/register.html">Join as Farmer</a>
+          </div>
+        </div>
+        <div class="hero-card hero-image-card">
+          <img src="card.jpeg" alt="Farm produce" class="hero-image" />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Built for farmers and buyers</h2>
+          <p class="section-subtitle">Farmers manage inventory, buyers place orders, and both track delivery progress.</p>
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Farmers</h3>
+              <p>List products, manage inventory, and keep buyers updated on fulfillment status.</p>
+              <a class="btn btn-outline" href="/winnie/farmer/dashboard.html">Farmer Dashboard</a>
+            </div>
+            <div class="card">
+              <h3>Buyers</h3>
+              <p>Search by category, price range, or location and track every order step.</p>
+              <a class="btn btn-outline" href="/winnie/buyer/dashboard.html">Buyer Dashboard</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="toolbar">
+            <div>
+              <h2 class="section-title">Live produce inventory</h2>
+              <p class="section-subtitle">Real-time listings from registered farmers.</p>
+            </div>
+            <a class="btn btn-outline" href="/winnie/products.html">View all products</a>
+          </div>
+          <div class="grid grid-3" data-products="home"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container hero-card">
+          <h2 class="section-title">A reliable fulfillment pipeline</h2>
+          <div class="grid grid-3">
+            <div>
+              <h3>1. Discover</h3>
+              <p>Filter by name, category, price range, and location to source the right produce.</p>
+            </div>
+            <div>
+              <h3>2. Order</h3>
+              <p>Place orders in KES and keep all items in one cart.</p>
+            </div>
+            <div>
+              <h3>3. Track</h3>
+              <p>Follow order status from request to completion.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        Online Farm Produce. Payments are CASH only. Prices displayed in KES.
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

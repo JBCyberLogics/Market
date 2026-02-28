@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/winnie/icon.png" />
+  <title>Restricted Login - Online Farm Produce</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container navbar">
+        <a class="brand" href="/winnie/">
+          <img src="icon.png" alt="Online Farm Produce" />
+          Online Farm Produce
+        </a>
+        <nav class="nav-links">
+          <a href="/winnie/products.html">Products</a>
+          <a href="/winnie/login.html">Buyer Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" data-theme-toggle>Theme</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="section auth-layout">
+      <div class="container auth-shell">
+        <div class="card auth-card">
+          <h2 class="section-title">Restricted login</h2>
+          <p class="section-subtitle">Authorized staff access only.</p>
+          <form class="form" data-validate data-api="login">
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" minlength="8" required />
+            </div>
+            <input type="hidden" name="role" value="" />
+            <div class="notice" data-form-message style="display: none;"></div>
+            <button class="btn btn-primary" type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

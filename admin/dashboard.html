@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/winnie/icon.png" />
+  <title>Admin Dashboard - Online Farm Produce</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <div class="page admin-page">
+    <header class="admin-topbar">
+      <div class="container admin-topbar-inner">
+        <a class="brand" href="/winnie/">
+          <img src="../icon.png" alt="Winnie" />
+          Online Farm Produce
+        </a>
+        <div class="admin-search">
+          <input type="search" placeholder="Search farmers, buyers, products, orders" aria-label="Global search" />
+        </div>
+        <div class="admin-actions">
+          <details class="admin-dropdown">
+            <summary class="btn btn-outline">Create</summary>
+            <div class="admin-dropdown-menu">
+              <button class="admin-menu-item" data-modal-open="modal-farmer">New farmer</button>
+              <button class="admin-menu-item" data-modal-open="modal-buyer">New buyer</button>
+              <button class="admin-menu-item" data-modal-open="modal-product">New product</button>
+              <button class="admin-menu-item" data-modal-open="modal-order">New order</button>
+              <button class="admin-menu-item" data-modal-open="modal-category">New category</button>
+            </div>
+          </details>
+          <button class="btn btn-ghost" aria-label="Notifications">Notifications</button>
+          <button class="btn btn-outline" aria-label="Admin profile">Admin</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <nav class="admin-nav">
+          <a class="admin-link is-active" href="#overview">Overview</a>
+          <a class="admin-link" href="#farmers">Farmers</a>
+          <a class="admin-link" href="#buyers">Buyers</a>
+          <a class="admin-link" href="#products">Products</a>
+          <a class="admin-link" href="#orders">Orders</a>
+          <a class="admin-link" href="#categories">Categories</a>
+          <a class="admin-link" href="#settings">Settings</a>
+        </nav>
+      </aside>
+
+      <main class="admin-content">
+        <section id="overview" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Overview</h2>
+              <p class="section-subtitle">Admin actions are explicit, auditable, and confirmed.</p>
+            </div>
+            <div class="badge">Role: Admin</div>
+          </div>
+          <div class="admin-metrics">
+            <div class="card admin-metric" data-admin-metric="farmers">
+              <p class="helper">Total farmers</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+            <div class="card admin-metric" data-admin-metric="buyers">
+              <p class="helper">Total buyers</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+            <div class="card admin-metric" data-admin-metric="products">
+              <p class="helper">Active products</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+            <div class="card admin-metric" data-admin-metric="orders">
+              <p class="helper">Orders today</p>
+              <h3>—</h3>
+              <p class="helper">No data available</p>
+            </div>
+          </div>
+
+          <div class="card admin-panel">
+            <div class="toolbar">
+              <div>
+                <h3>Recent activity</h3>
+                <p class="section-subtitle">Last 10 actions will appear here.</p>
+              </div>
+            </div>
+            <div class="notice">No data available</div>
+          </div>
+        </section>
+
+        <section id="farmers" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Farmers</h2>
+              <p class="section-subtitle">Create, review, suspend, or remove farmers with audit logs.</p>
+            </div>
+            <div class="admin-section-actions">
+              <button class="btn btn-outline" data-modal-open="modal-farmer">Create farmer</button>
+            </div>
+          </div>
+          <div class="admin-filters">
+            <input type="search" placeholder="Search farmers" aria-label="Search farmers" data-admin-filter="farmers-search" />
+            <select aria-label="Farmer status filter" data-admin-filter="farmers-status">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="suspended">Suspended</option>
+              <option value="verified">Verified</option>
+            </select>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+                  <th>Products</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-admin-rows="farmers"></tbody>
+            </table>
+            <div class="notice" data-admin-empty="farmers">No data available</div>
+          </div>
+        </section>
+
+        <section id="buyers" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Buyers</h2>
+              <p class="section-subtitle">Manage buyer accounts, order history, and access state.</p>
+            </div>
+            <div class="admin-section-actions">
+              <button class="btn btn-outline" data-modal-open="modal-buyer">Create buyer</button>
+            </div>
+          </div>
+          <div class="admin-filters">
+            <input type="search" placeholder="Search buyers" aria-label="Search buyers" data-admin-filter="buyers-search" />
+            <select aria-label="Buyer status filter" data-admin-filter="buyers-status">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Orders</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-admin-rows="buyers"></tbody>
+            </table>
+            <div class="notice" data-admin-empty="buyers">No data available</div>
+          </div>
+        </section>
+
+        <section id="products" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Products</h2>
+              <p class="section-subtitle">Full CRUD control with confirmations and audit trails.</p>
+            </div>
+            <div class="admin-section-actions">
+              <button class="btn btn-outline" data-modal-open="modal-product">Create product</button>
+              <button class="btn btn-ghost" data-confirm="Bulk delete requires confirmation.">Bulk delete</button>
+              <button class="btn btn-ghost" data-confirm="Bulk disable requires confirmation.">Bulk disable</button>
+            </div>
+          </div>
+          <div class="admin-filters">
+            <input type="search" placeholder="Search products" aria-label="Search products" data-admin-filter="products-search" />
+            <select aria-label="Category filter" data-admin-filter="products-category">
+              <option value="">All categories</option>
+            </select>
+            <select aria-label="Farmer filter" data-admin-filter="products-farmer">
+              <option value="">All farmers</option>
+            </select>
+            <select aria-label="Status filter" data-admin-filter="products-status">
+              <option value="">All statuses</option>
+              <option value="available">Available</option>
+              <option value="unavailable">Unavailable</option>
+            </select>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Farmer</th>
+                  <th>Price (KES)</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-admin-rows="products"></tbody>
+            </table>
+            <div class="notice" data-admin-empty="products">No data available</div>
+          </div>
+        </section>
+
+        <section id="orders" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Orders</h2>
+              <p class="section-subtitle">Override status, cancel, or refund with confirmations.</p>
+            </div>
+            <div class="admin-section-actions">
+              <button class="btn btn-outline" data-modal-open="modal-order">Create order</button>
+            </div>
+          </div>
+          <div class="admin-filters">
+            <input type="search" placeholder="Search orders" aria-label="Search orders" data-admin-filter="orders-search" />
+            <select aria-label="Order status filter" data-admin-filter="orders-status">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <input type="date" aria-label="Order date filter" data-admin-filter="orders-date" />
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Buyer</th>
+                  <th>Product</th>
+                  <th>Status</th>
+                  <th>Total (KES)</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-admin-rows="orders"></tbody>
+            </table>
+            <div class="notice" data-admin-empty="orders">No data available</div>
+          </div>
+        </section>
+
+        <section id="categories" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Categories</h2>
+              <p class="section-subtitle">Manage product categories and visibility.</p>
+            </div>
+            <div class="admin-section-actions">
+              <button class="btn btn-outline" data-modal-open="modal-category">Create category</button>
+            </div>
+          </div>
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Products</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-admin-rows="categories"></tbody>
+            </table>
+            <div class="notice" data-admin-empty="categories">No data available</div>
+          </div>
+        </section>
+
+        <section id="settings" class="admin-section">
+          <div class="admin-section-header">
+            <div>
+              <h2 class="section-title">Settings</h2>
+              <p class="section-subtitle">Audit controls and soft-delete preferences.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+              <div class="notice">Audit trail enabled for create, update, delete, suspend, and reassign.</div>
+              <div class="notice">Soft delete enabled. Restore is allowed.</div>
+              <div class="notice">All status changes require confirmation.</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="admin-sidepanel" data-sidepanel>
+        <div class="admin-sidepanel-header">
+          <h3>Details</h3>
+          <button class="btn btn-ghost" data-sidepanel-close>Close</button>
+        </div>
+        <div class="notice" data-sidepanel-body>No data available</div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="admin-modal" id="modal-farmer" aria-hidden="true">
+    <div class="admin-modal-card">
+      <form class="form" data-admin-form="farmer">
+        <div class="admin-modal-header">
+          <h3>Farmer</h3>
+          <button class="btn btn-ghost" type="button" data-modal-close>Close</button>
+        </div>
+        <div class="admin-modal-body">
+          <input type="hidden" name="id" />
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label>Password (set to update)</label>
+            <input type="password" name="password" minlength="8" />
+          </div>
+          <div class="input-group">
+            <label>Status</label>
+            <select name="status">
+              <option value="active">Active</option>
+              <option value="suspended">Suspended</option>
+              <option value="verified">Verified</option>
+            </select>
+          </div>
+          <div class="notice" data-admin-message="farmer" style="display: none;"></div>
+        </div>
+        <div class="admin-modal-footer">
+          <button class="btn btn-outline" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm farmer save?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-modal" id="modal-buyer" aria-hidden="true">
+    <div class="admin-modal-card">
+      <form class="form" data-admin-form="buyer">
+        <div class="admin-modal-header">
+          <h3>Buyer</h3>
+          <button class="btn btn-ghost" type="button" data-modal-close>Close</button>
+        </div>
+        <div class="admin-modal-body">
+          <input type="hidden" name="id" />
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label>Password (set to update)</label>
+            <input type="password" name="password" minlength="8" />
+          </div>
+          <div class="input-group">
+            <label>Status</label>
+            <select name="status">
+              <option value="active">Active</option>
+              <option value="suspended">Suspended</option>
+              <option value="verified">Verified</option>
+            </select>
+          </div>
+          <div class="notice" data-admin-message="buyer" style="display: none;"></div>
+        </div>
+        <div class="admin-modal-footer">
+          <button class="btn btn-outline" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm buyer save?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-modal" id="modal-product" aria-hidden="true">
+    <div class="admin-modal-card">
+      <form class="form" data-admin-form="product">
+        <div class="admin-modal-header">
+          <h3>Product</h3>
+          <button class="btn btn-ghost" type="button" data-modal-close>Close</button>
+        </div>
+        <div class="admin-modal-body">
+          <input type="hidden" name="product_id" />
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="input-group">
+            <label>Category</label>
+            <input type="text" name="category" required />
+          </div>
+          <div class="input-group">
+            <label>Farmer ID</label>
+            <input type="number" name="farmer_id" min="1" required />
+          </div>
+          <div class="input-group">
+            <label>Price (KES)</label>
+            <input type="number" name="price_kes" min="0" step="0.01" required />
+          </div>
+          <div class="input-group">
+            <label>Quantity</label>
+            <input type="number" name="quantity" min="0" required />
+          </div>
+          <div class="input-group">
+            <label>Quantity label (optional)</label>
+            <input type="text" name="quantity_label" placeholder="e.g. 10 crates, 5 bags" />
+          </div>
+          <div class="input-group">
+            <label>Product image</label>
+            <input type="file" name="image_file" accept="image/*" />
+            <span class="helper">Choose an image from your device.</span>
+          </div>
+          <div class="input-group">
+            <label>Status</label>
+            <select name="status">
+              <option value="available">Available</option>
+              <option value="unavailable">Unavailable</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Description</label>
+            <textarea name="description" placeholder="Short description"></textarea>
+          </div>
+          <div class="notice" data-admin-message="product" style="display: none;"></div>
+        </div>
+        <div class="admin-modal-footer">
+          <button class="btn btn-outline" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm product save?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-modal" id="modal-order" aria-hidden="true">
+    <div class="admin-modal-card">
+      <form class="form" data-admin-form="order">
+        <div class="admin-modal-header">
+          <h3>Order</h3>
+          <button class="btn btn-ghost" type="button" data-modal-close>Close</button>
+        </div>
+        <div class="admin-modal-body">
+          <input type="hidden" name="order_id" />
+          <div class="input-group">
+            <label>Buyer ID</label>
+            <input type="number" name="buyer_id" min="1" required />
+          </div>
+          <div class="input-group">
+            <label>Product ID</label>
+            <input type="number" name="product_id" min="1" required />
+          </div>
+          <div class="input-group">
+            <label>Quantity</label>
+            <input type="number" name="quantity" min="1" required />
+          </div>
+          <div class="input-group">
+            <label>Status</label>
+            <select name="status">
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+          <div class="notice" data-admin-message="order" style="display: none;"></div>
+        </div>
+        <div class="admin-modal-footer">
+          <button class="btn btn-outline" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm order save?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-modal" id="modal-category" aria-hidden="true">
+    <div class="admin-modal-card">
+      <form class="form" data-admin-form="category">
+        <div class="admin-modal-header">
+          <h3>Category</h3>
+          <button class="btn btn-ghost" type="button" data-modal-close>Close</button>
+        </div>
+        <div class="admin-modal-body">
+          <input type="hidden" name="id" />
+          <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="notice" data-admin-message="category" style="display: none;"></div>
+        </div>
+        <div class="admin-modal-footer">
+          <button class="btn btn-outline" type="button" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" type="submit" data-confirm="Confirm category save?">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
