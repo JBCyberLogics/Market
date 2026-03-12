@@ -1,0 +1,1 @@
+{"name": "jbcyberlogics/market", "description": "JB CyberLogics Market Platform", "type": "project", "license": "MIT", "require": {"php": "^7.4|^8.0"}, "authors": [{"name": "JBCyberLogics"}]}
